@@ -1,0 +1,32 @@
+
+
+library("xml2")
+library("rvest")
+getwd()
+setwd("C:/Users/toshaan boss/Desktop/Term IV/AMMA")
+
+##----Problem 1--------------##
+
+input_csv.df<-read.csv("DP_LIVE_02072017055613917.csv",header=T)
+class(input_csv.df)
+
+input_csv.df<-input_csv.df[,-8]
+View(input_csv.df)
+
+
+
+
+##-------- Problem 2 -----------####
+
+
+cricket_link = "https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
+cricket_file=read_html(cricket_link)
+cricket_table=html_nodes(cricket_file,"table")
+cricket_table_final<-html_table(cricket_table[2],fill=TRUE)
+View(cricket_table_final)
+class(cricket_table_final)
+cricket_table.df <- as.data.frame(cricket_table_final)
+View(cricket_table.df)
+NumberODI = cricket_table.df$ODI[2]
+
+NumberODI
