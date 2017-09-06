@@ -1,0 +1,38 @@
+getwd()
+
+setwd("C:/Users/toshaan boss/Desktop/Term IV/AMMA")
+
+#---- Problem 1 ---------#
+
+install.packages("data.table")
+install.packages("datasets")
+View(women)
+
+
+#------ Problem 2 --------#
+
+# Finding mean values for height and weight 
+
+mean.height <- mean(women$height)
+
+mean.weight <- mean(women$weight)
+
+women_df <- subset(women,height > mean.height & weight < mean.weight)
+
+women_df
+
+#------- Problem 3 --------#
+
+city_link <- "http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
+
+city_file <- read_html(city_link)
+
+city_table <- html_nodes(city_file, "table")
+
+city_table_final <- html_table(city_table[1], fill=TRUE)
+
+view(city_table_final)
+city_data <- as.data.frame(city_table_final)
+
+View(city_data)
+
